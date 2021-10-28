@@ -1,0 +1,9 @@
+#!/bin/sh
+set -e
+export PGPASSWORD=$POSTGRES_PASSWORD;
+export ARCH_NAME="dvdrental.zip"
+export RES_FILE="dvdrental.tar"
+export URL="https://www.postgresqltutorial.com/wp-content/uploads/2019/05/${ARCH_NAME}"
+apt-get update && apt-get install -y wget unzip
+wget -nv "${URL}" -O /tmp/${ARCH_NAME}" && unzip -q "/tmp/${ARCH_NAME}" -d /tmp
+pg_restore -U postgres -d "POSTGRES_DB" /tmp/${RES_NAME}

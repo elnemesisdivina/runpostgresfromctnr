@@ -1,0 +1,20 @@
+version: '3'
+
+services:
+  postgresql:
+    image: docker.io/bitnami/postgresql:latest
+    env_file:
+      - database.env
+    ports:
+      - '5432:5432'
+    volumes:
+      - /Users/rcastaneda/000_DS_vray_magnimind/Postgresql-persistence:/bitnami/postgresql
+      - ./db/restoredb.sh:/docker-entrypoint-initdb.d/restoredb.sh
+  fix-postgresql-permissions:
+    image: docker.io/bitnami/postgresql:latest
+    user: root
+    command: chown -R 1001:1001 /bitnami/postgresql
+    command: chown -R 1001:1001 /docker-entrypoint-initdb.d/restoredb.sh
+    volumes: 
+      - /Users/rcastaneda/000_DS_vray_magnimind/Postgresql-persistence:/bitnami/postgresql
+      - ./db/restoredb.sh:/docker-entrypoint-initdb.d/restoredb.sh

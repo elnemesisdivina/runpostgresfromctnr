@@ -1,0 +1,7 @@
+docker-compose.yml.test
+restoredvddb.sh.test
+db/dvdrental.tar
+db/dvdrental.zip
+db/getfile.sh.test
+db/restoredb.sh
+db/restoredvddb.sh.test

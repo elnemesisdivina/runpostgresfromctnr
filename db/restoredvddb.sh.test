@@ -1,0 +1,4 @@
+#!/bin/sh
+set -e
+export PGPASSWORD=$POSTGRES_PASSWORD;
+pg_restore -U postgres -d "POSTGRES_DB" /tmp/${RES_NAME}
